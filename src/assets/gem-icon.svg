@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#14161B" />
+      <stop offset="100%" stop-color="#090A0D" />
+    </linearGradient>
+    <linearGradient id="goldLight" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F7E7CD" />
+      <stop offset="50%" stop-color="#D4AF37" />
+      <stop offset="100%" stop-color="#AA823E" />
+    </linearGradient>
+    <linearGradient id="goldDeep" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#8C682D" />
+      <stop offset="70%" stop-color="#C5A059" />
+      <stop offset="100%" stop-color="#EAD5B3" />
+    </linearGradient>
+    <radialGradient id="gemGlow" cx="50%" cy="40%" r="50%">
+      <stop offset="0%" stop-color="#D4AF37" stop-opacity="0.25" />
+      <stop offset="100%" stop-color="#000000" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+
+  <!-- Deep luxury rounded badge background -->
+  <rect width="64" height="64" rx="14" fill="url(#bgGrad)" />
+  <rect width="62" height="62" x="1" y="1" rx="13" fill="none" stroke="url(#goldLight)" stroke-opacity="0.3" stroke-width="1" />
+
+  <!-- Subtle glow beneath gem -->
+  <circle cx="32" cy="34" r="22" fill="url(#gemGlow)" />
+
+  <!-- Gemstone Silhouette & Facets -->
+  <g stroke="#14161B" stroke-width="0.75" stroke-linejoin="round">
+    <!-- Top Table (Upper Center) -->
+    <polygon points="23,16 41,16 37,27 27,27" fill="url(#goldLight)" />
+
+    <!-- Top Left Crown Star -->
+    <polygon points="19,16 23,16 27,27 12,27" fill="#E8D2A8" />
+
+    <!-- Top Right Crown Star -->
+    <polygon points="41,16 45,16 52,27 37,27" fill="#C29D55" />
+
+    <!-- Pavilion Center Triangle (Lower Center) -->
+    <polygon points="27,27 37,27 32,50" fill="url(#goldLight)" />
+
+    <!-- Pavilion Left Facet -->
+    <polygon points="12,27 27,27 32,50" fill="#9C7736" />
+
+    <!-- Pavilion Right Facet -->
+    <polygon points="37,27 52,27 32,50" fill="#B8934E" />
+  </g>
+
+  <!-- Specimen Sparkle Accent -->
+  <circle cx="23" cy="18" r="1.5" fill="#FFFFFF" opacity="0.8" />
+</svg>
