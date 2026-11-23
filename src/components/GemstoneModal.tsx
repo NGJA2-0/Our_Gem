@@ -71,15 +71,6 @@ export const GemstoneModal: React.FC<GemstoneModalProps> = ({
           </button>
         </div>
 
-        {/* Desktop Close Button */}
-        <button
-          onClick={onClose}
-          className="hidden md:flex absolute top-4 right-4 z-20 p-2.5 text-ivory-400 hover:text-ivory-100 bg-charcoal-950/85 border border-ivory-200/10 hover:border-gold-400/50 transition-colors focus:outline-none"
-          aria-label="Close inspection window"
-        >
-          <X className="w-5 h-5" />
-        </button>
-
         {/* Left: Gemstone Visual Showcase */}
         <div className="relative md:w-1/2 bg-charcoal-950 flex flex-col items-center justify-center p-4 sm:p-6 md:p-10 border-b md:border-b-0 md:border-r border-ivory-200/10">
           <div className="relative w-full max-w-sm aspect-square flex items-center justify-center overflow-hidden bg-charcoal-900/40 border border-ivory-200/10">
@@ -127,14 +118,24 @@ export const GemstoneModal: React.FC<GemstoneModalProps> = ({
         {/* Right: Curatorial Specifications & Inspection Notes */}
         <div className="md:w-1/2 p-5 sm:p-7 md:p-10 flex flex-col justify-between overflow-y-auto">
           <div>
-            <div className="hidden md:flex items-center justify-between mb-3">
+            {/* Desktop Header with Non-overlapping Close Button */}
+            <div className="hidden md:flex items-center justify-between mb-4 pb-3 border-b border-ivory-200/10">
               <span className="font-serif font-semibold text-gold-400 text-sm tracking-wider flex items-center space-x-1.5">
                 <Sparkles className="w-4 h-4 text-gold-400" />
                 <span>{gemstone.itemNumber} &bull; ARCHIVAL SPECIMEN</span>
               </span>
-              <span className="text-xs uppercase tracking-wider text-ivory-300 font-medium">
-                {gemstone.mineralFamily}
-              </span>
+              <div className="flex items-center space-x-3.5">
+                <span className="text-xs uppercase tracking-wider text-ivory-300 font-medium">
+                  {gemstone.mineralFamily}
+                </span>
+                <button
+                  onClick={onClose}
+                  className="p-1.5 text-ivory-400 hover:text-ivory-100 hover:border-gold-400/60 bg-charcoal-950/80 border border-ivory-200/15 transition-all focus:outline-none"
+                  aria-label="Close inspection window"
+                >
+                  <X className="w-4 h-4" />
+                </button>
+              </div>
             </div>
 
             <h2 id="modal-gem-title" className="font-serif text-2xl sm:text-3xl md:text-4xl font-semibold text-ivory-100 tracking-tight mb-1.5">
