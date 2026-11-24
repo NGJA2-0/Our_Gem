@@ -1,6 +1,8 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Gemstone } from '../types/gemstone';
 import { X, ChevronLeft, ChevronRight, Sparkles } from 'lucide-react';
+import { GemColourSelector } from './GemColourSelector';
+import { GemCutSelector } from './GemCutSelector';
 
 interface GemstoneModalProps {
   gemstone: Gemstone | null;
@@ -13,6 +15,15 @@ export const GemstoneModal: React.FC<GemstoneModalProps> = ({
   onClose,
   onNavigate,
 }) => {
+  const [selectedColourIndex, setSelectedColourIndex] = useState(0);
+  const [selectedCutId, setSelectedCutId] = useState<string>('');
+
+  // Reset selection state whenever the gemstone changes
+  useEffect(() => {
+    setSelectedColourIndex(0);
+    setSelectedCutId(gemstone?.recommendedCut ?? gemstone?.availableCuts?.[0] ?? '');
+  }, [gemstone]);
+
   // Lock body scroll and listen for keyboard navigation
   useEffect(() => {
     if (gemstone) {
@@ -36,22 +47,32 @@ export const GemstoneModal: React.FC<GemstoneModalProps> = ({
 
   if (!gemstone) return null;
 
+  // Resolve displayed image — use colour-variant image if available, else fall back
+  const hasColourVariants = gemstone.colourVariants && gemstone.colourVariants.length > 0;
+  const selectedVariant = hasColourVariants ? gemstone.colourVariants![selectedColourIndex] : null;
+  const displayImage = selectedVariant?.image ?? gemstone.image;
+
+  // Moonstone gets a special optical-effect note
+  const cutNote = gemstone.id === 'royal-moonstone'
+    ? 'Blue adularescence is an optical scattering effect visible across all body colours — it is not a separate colour variety.'
+    : undefined;
+
   return (
-    <div 
+    <div
       className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-5 md:p-8 bg-charcoal-950/95 backdrop-blur-md overflow-y-auto"
       role="dialog"
       aria-modal="true"
       aria-labelledby="modal-gem-title"
     >
       {/* Background click to dismiss */}
-      <div 
-        className="fixed inset-0 cursor-pointer -z-10" 
-        onClick={onClose} 
+      <div
+        className="fixed inset-0 cursor-pointer -z-10"
+        onClick={onClose}
       />
 
       {/* Modal Dialog Card */}
-      <div className="relative w-full max-w-5xl bg-charcoal-900 border border-ivory-200/15 shadow-2xl overflow-hidden flex flex-col md:flex-row my-auto max-h-[94vh]">
-        
+      <div className="relative w-full max-w-5xl bg-charcoal-900 border border-ivory-200/15 shadow-2xl overflow-hidden flex flex-col md:flex-row my-auto">
+
         {/* Mobile Sticky / Top Bar with Close Button */}
         <div className="md:hidden flex items-center justify-between p-4 border-b border-ivory-200/10 bg-charcoal-950">
           <div className="flex items-center space-x-2">
@@ -72,12 +93,12 @@ export const GemstoneModal: React.FC<GemstoneModalProps> = ({
         </div>
 
         {/* Left: Gemstone Visual Showcase */}
-        <div className="relative md:w-1/2 bg-charcoal-950 flex flex-col items-center justify-center p-4 sm:p-6 md:p-10 border-b md:border-b-0 md:border-r border-ivory-200/10">
+        <div className="relative md:w-[42%] lg:w-[45%] bg-charcoal-950 flex flex-col items-center justify-center p-4 sm:p-6 md:p-10 border-b md:border-b-0 md:border-r border-ivory-200/10">
           <div className="relative w-full max-w-sm aspect-square flex items-center justify-center overflow-hidden bg-charcoal-900/40 border border-ivory-200/10">
             {/* Gemstone Image */}
             <img
-              src={gemstone.image}
-              alt={gemstone.name}
+              src={displayImage}
+              alt={selectedVariant ? `${gemstone.name} — ${selectedVariant.name}` : gemstone.name}
               className="w-full h-full object-cover transition-all duration-500"
             />
 
@@ -115,10 +136,11 @@ export const GemstoneModal: React.FC<GemstoneModalProps> = ({
           </button>
         </div>
 
-        {/* Right: Curatorial Specifications & Inspection Notes */}
-        <div className="md:w-1/2 p-5 sm:p-7 md:p-10 flex flex-col justify-between overflow-y-auto">
-          <div>
-            {/* Desktop Header with Non-overlapping Close Button */}
+        {/* Right: Curatorial Specifications & Interactive Sections */}
+        <div className="md:w-[58%] lg:w-[55%] flex flex-col overflow-y-auto max-h-[80vh] md:max-h-[94vh]">
+          <div className="p-5 sm:p-7 md:p-8 flex flex-col flex-1">
+
+            {/* Desktop Header */}
             <div className="hidden md:flex items-center justify-between mb-4 pb-3 border-b border-ivory-200/10">
               <span className="font-serif font-semibold text-gold-400 text-sm tracking-wider flex items-center space-x-1.5">
                 <Sparkles className="w-4 h-4 text-gold-400" />
@@ -138,7 +160,11 @@ export const GemstoneModal: React.FC<GemstoneModalProps> = ({
               </div>
             </div>
 
-            <h2 id="modal-gem-title" className="font-serif text-2xl sm:text-3xl md:text-4xl font-semibold text-ivory-100 tracking-tight mb-1.5">
+            {/* ── GEMSTONE IDENTITY ─────────────────────────────────────────── */}
+            <h2
+              id="modal-gem-title"
+              className="font-serif text-2xl sm:text-3xl md:text-[1.9rem] font-semibold text-ivory-100 tracking-tight mb-1.5"
+            >
               {gemstone.name}
             </h2>
 
@@ -146,13 +172,13 @@ export const GemstoneModal: React.FC<GemstoneModalProps> = ({
               {gemstone.variety}
             </p>
 
-            <div className="hairline-subtle my-4" />
+            <div className="hairline-subtle mb-4" />
 
-            {/* Specimen Specification Grid */}
-            <div className="space-y-3 mb-6 text-sm">
+            {/* ── SPECIMEN SPECIFICATIONS ───────────────────────────────────── */}
+            <div className="space-y-2.5 mb-5 text-sm">
               <div className="flex justify-between items-center py-1.5 border-b border-ivory-200/5">
                 <span className="text-ivory-400 uppercase tracking-wide text-xs font-medium">
-                  Cut & Faceting
+                  Cut &amp; Faceting
                 </span>
                 <span className="text-ivory-100 font-semibold text-right">
                   {gemstone.cut}
@@ -184,8 +210,38 @@ export const GemstoneModal: React.FC<GemstoneModalProps> = ({
               </div>
             </div>
 
-            {/* Curatorial Highlights */}
-            <div className="mb-6">
+            {/* ── COLOUR VARIATIONS ─────────────────────────────────────────── */}
+            {hasColourVariants && gemstone.colourVariants && (
+              <>
+                <div className="mb-5">
+                  <GemColourSelector
+                    variants={gemstone.colourVariants}
+                    selectedIndex={selectedColourIndex}
+                    onSelect={setSelectedColourIndex}
+                  />
+                </div>
+              </>
+            )}
+
+            {/* ── CUT & FACETING SELECTOR ────────────────────────────────────── */}
+            {gemstone.availableCuts && gemstone.availableCuts.length > 0 && gemstone.recommendedCut && (
+              <>
+                <div className="hairline-subtle mb-5" />
+                <div className="mb-5">
+                  <GemCutSelector
+                    availableCutIds={gemstone.availableCuts}
+                    selectedCutId={selectedCutId}
+                    recommendedCutId={gemstone.recommendedCut}
+                    onSelect={setSelectedCutId}
+                    note={cutNote}
+                  />
+                </div>
+              </>
+            )}
+
+            {/* ── VISUAL INSPECTION NOTES ───────────────────────────────────── */}
+            <div className="hairline-subtle mb-5" />
+            <div className="mb-5">
               <div className="text-xs uppercase tracking-wider text-gold-400 mb-3 font-semibold">
                 Visual Inspection Notes
               </div>
@@ -198,37 +254,41 @@ export const GemstoneModal: React.FC<GemstoneModalProps> = ({
                 ))}
               </ul>
             </div>
-          </div>
 
-          {/* Mobile Quick Navigation Bar */}
-          <div className="md:hidden flex items-center justify-between gap-3 pt-4 border-t border-ivory-200/10">
-            <button
-              onClick={() => onNavigate('prev')}
-              className="flex-1 py-3 px-4 bg-charcoal-950 border border-ivory-200/20 text-xs tracking-wider uppercase text-ivory-100 font-semibold active:bg-charcoal-800 flex items-center justify-center space-x-1.5 min-h-[44px]"
-            >
-              <ChevronLeft className="w-4 h-4 text-gold-400" />
-              <span>Previous</span>
-            </button>
-            <button
-              onClick={() => onNavigate('next')}
-              className="flex-1 py-3 px-4 bg-charcoal-950 border border-ivory-200/20 text-xs tracking-wider uppercase text-ivory-100 font-semibold active:bg-charcoal-800 flex items-center justify-center space-x-1.5 min-h-[44px]"
-            >
-              <span>Next</span>
-              <ChevronRight className="w-4 h-4 text-gold-400" />
-            </button>
-          </div>
+            {/* Spacer to push controls to bottom on desktop */}
+            <div className="flex-1" />
 
-          {/* Desktop Footer Controls */}
-          <div className="hidden md:flex mt-6 pt-5 border-t border-ivory-200/10 items-center justify-between">
-            <span className="text-xs tracking-wider text-ivory-400 uppercase font-medium">
-              Use &larr; &rarr; keys to browse
-            </span>
-            <button
-              onClick={onClose}
-              className="px-6 py-2.5 text-xs uppercase tracking-wider font-semibold text-ivory-100 border border-ivory-200/25 hover:border-gold-400/70 hover:text-gold-300 transition-colors"
-            >
-              Return to Gallery
-            </button>
+            {/* ── MOBILE NAVIGATION ─────────────────────────────────────────── */}
+            <div className="md:hidden flex items-center justify-between gap-3 pt-4 border-t border-ivory-200/10 mt-2">
+              <button
+                onClick={() => onNavigate('prev')}
+                className="flex-1 py-3 px-4 bg-charcoal-950 border border-ivory-200/20 text-xs tracking-wider uppercase text-ivory-100 font-semibold active:bg-charcoal-800 flex items-center justify-center space-x-1.5 min-h-[44px]"
+              >
+                <ChevronLeft className="w-4 h-4 text-gold-400" />
+                <span>Previous</span>
+              </button>
+              <button
+                onClick={() => onNavigate('next')}
+                className="flex-1 py-3 px-4 bg-charcoal-950 border border-ivory-200/20 text-xs tracking-wider uppercase text-ivory-100 font-semibold active:bg-charcoal-800 flex items-center justify-center space-x-1.5 min-h-[44px]"
+              >
+                <span>Next</span>
+                <ChevronRight className="w-4 h-4 text-gold-400" />
+              </button>
+            </div>
+
+            {/* ── DESKTOP FOOTER CONTROLS ───────────────────────────────────── */}
+            <div className="hidden md:flex mt-4 pt-4 border-t border-ivory-200/10 items-center justify-between">
+              <span className="text-xs tracking-wider text-ivory-400 uppercase font-medium">
+                Use &larr; &rarr; keys to browse
+              </span>
+              <button
+                onClick={onClose}
+                className="px-6 py-2.5 text-xs uppercase tracking-wider font-semibold text-ivory-100 border border-ivory-200/25 hover:border-gold-400/70 hover:text-gold-300 transition-colors"
+              >
+                Return to Gallery
+              </button>
+            </div>
+
           </div>
         </div>
       </div>
