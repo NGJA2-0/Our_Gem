@@ -15,6 +15,8 @@ const FACETED_GARNET_CUTS   = ['oval', 'round', 'cushion', 'pear', 'marquise', '
 const FACETED_TOURMALINE_CUTS = ['oval', 'round', 'cushion', 'pear', 'marquise', 'emerald', 'princess', 'radiant', 'trillion', 'baguette'];
 // Moonstone: cabochon-first, some faceting is done but cabochon is the natural preference
 const MOONSTONE_CUTS = ['cabochon', 'oval', 'round'];
+// Quartz species (Amethyst): faceted cuts and cabochon
+const QUARTZ_CUTS = ['oval', 'round', 'cushion', 'pear', 'marquise', 'emerald', 'princess', 'heart', 'radiant', 'trillion', 'baguette', 'cabochon'];
 
 export const GEMSTONES: Gemstone[] = [
   {
@@ -402,6 +404,41 @@ export const GEMSTONES: Gemstone[] = [
       },
     ],
     availableCuts: FACETED_CORUNDUM_CUTS,
+    recommendedCut: 'oval',
+  },
+
+  {
+    id: 'amethyst',
+    itemNumber: 'N° 10',
+    name: 'Amethyst',
+    mineralFamily: 'Quartz Group',
+    variety: 'Natural Amethyst',
+    cut: 'Oval Faceted Cut',
+    colorDescription: 'Natural Purple Quartz',
+    image: '/gems/amethyst.webp',
+    highlights: [
+      'Rich violet-purple crystalline saturation',
+      'Distinctive quartz crystal clarity and vitreous luster',
+      'Natural pleochroism displaying subtle violet-red undertones',
+    ],
+    colourVariants: [
+      {
+        name: 'Light Lavender',
+        hex: '#C6A4EE',
+        image: '/gems/variants/amethyst/light-lavender.webp',
+      },
+      {
+        name: 'Violet',
+        hex: '#8D42DE',
+        image: '/gems/variants/amethyst/violet.webp',
+      },
+      {
+        name: 'Deep Purple',
+        hex: '#4B1884',
+        image: '/gems/variants/amethyst/deep-purple.webp',
+      },
+    ],
+    availableCuts: QUARTZ_CUTS,
     recommendedCut: 'oval',
   },
 ];

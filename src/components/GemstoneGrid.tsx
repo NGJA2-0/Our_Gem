@@ -24,7 +24,7 @@ export const GemstoneGrid: React.FC<GemstoneGridProps> = ({
           </h2>
         </div>
         <div className="mt-4 md:mt-0 text-xs sm:text-sm tracking-wider text-ivory-300 font-medium">
-          SHOWCASING <span className="text-gold-300 font-serif font-bold text-lg sm:text-xl">9</span> OF 9 SPECIMENS
+          SHOWCASING <span className="text-gold-300 font-serif font-bold text-lg sm:text-xl">{gemstones.length}</span> OF {gemstones.length} SPECIMENS
         </div>
       </div>
 

@@ -29,7 +29,7 @@ export const Hero: React.FC = () => {
         {/* Primary Editorial Title */}
         <h1 className="font-serif text-3xl sm:text-4xl font-semibold text-ivory-100 tracking-tight leading-tight mb-2.5">
           The Geometry of Light <br />
-          <span className="italic font-normal text-gold-300 text-2xl sm:text-3xl">Nine Rare Gemstones</span>
+          <span className="italic font-normal text-gold-300 text-2xl sm:text-3xl">Ten Rare Gemstones</span>
         </h1>
 
         {/* Readable Editorial Lead */}
@@ -61,7 +61,7 @@ export const Hero: React.FC = () => {
           className="group flex flex-col items-center space-y-2.5 text-xs uppercase tracking-widest font-semibold text-ivory-100 active:text-gold-300 transition-colors focus:outline-none"
         >
           <span className="px-6 py-2.5 bg-charcoal-900 border border-gold-500/40 text-gold-300 shadow-lg tracking-wider text-xs">
-            View The 9 Specimens
+            View The 10 Specimens
           </span>
           <div className="w-8 h-8 border border-ivory-200/15 flex items-center justify-center bg-charcoal-900/80">
             <ArrowDown className="w-3.5 h-3.5 text-gold-400 group-hover:translate-y-0.5 transition-transform" />
@@ -116,7 +116,7 @@ export const Hero: React.FC = () => {
           {/* Primary Editorial Title */}
           <h1 className="font-serif text-5xl lg:text-7xl font-semibold text-ivory-100 tracking-tight leading-[1.12] mb-6 drop-shadow-md">
             The Geometry of Light <br />
-            <span className="italic font-normal text-gold-300">Nine Rare Gemstones</span>
+            <span className="italic font-normal text-gold-300">Ten Rare Gemstones</span>
           </h1>
 
           {/* Readable Editorial Lead */}
@@ -132,7 +132,7 @@ export const Hero: React.FC = () => {
               className="group flex flex-col items-center space-y-3 text-xs uppercase tracking-widest font-semibold text-ivory-100 hover:text-gold-300 transition-colors focus:outline-none"
             >
               <span className="bg-charcoal-950/80 backdrop-blur-md px-5 py-2 border border-ivory-200/20 group-hover:border-gold-400/60 transition-all shadow-md">
-                View The 9 Specimens
+                View The 10 Specimens
               </span>
               <div className="w-10 h-10 border border-ivory-200/20 group-hover:border-gold-400/80 flex items-center justify-center transition-all bg-charcoal-950/80 backdrop-blur-sm shadow-lg">
                 <ArrowDown className="w-4 h-4 text-gold-400 group-hover:translate-y-0.5 transition-transform" />
