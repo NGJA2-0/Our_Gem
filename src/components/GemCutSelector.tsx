@@ -1,8 +1,6 @@
 import React from 'react';
 import { GEM_CUTS } from '../data/gemCuts';
 import { GemCutSilhouette } from './GemCutSilhouette';
-import { Star } from 'lucide-react';
-
 interface GemCutSelectorProps {
   availableCutIds: string[];
   selectedCutId: string;
