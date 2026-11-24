@@ -41,10 +41,10 @@ export const GemCutSelector: React.FC<GemCutSelectorProps> = ({
         </div>
 
         {/* Recommended Cut Badge */}
-        <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-gold-500/40 bg-charcoal-900/80 text-gold-300 text-xs font-serif flex-shrink-0 shadow-sm">
+        {/* <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-gold-500/40 bg-charcoal-900/80 text-gold-300 text-xs font-serif flex-shrink-0 shadow-sm">
           <Star className="w-3.5 h-3.5 text-gold-400 fill-gold-400" />
           <span>Recommended Cut</span>
-        </div>
+        </div> */}
       </div>
 
       {/* Selected cut subtitle / name indicator */}
