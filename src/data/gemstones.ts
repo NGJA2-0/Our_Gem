@@ -31,14 +31,27 @@ export const GEMSTONES: Gemstone[] = [
       'High optical brilliance and facet symmetry',
       'Unheated crystalline clarity',
     ],
-    // NGJA: "colour is apparently a combination of pink and orange"
-    // Padparadscha is defined by its pinkish-orange identity; not every shade below
-    // is equally common — the classic lotus sunset colour is the defining standard.
     colourVariants: [
-      { name: 'Lotus Pink-Orange', hex: '#E8956B' },      // Classic padparadscha — defining colour
-      { name: 'Salmon',           hex: '#E97F6A' },        // Warm salmon-toned specimens
-      { name: 'Peach',            hex: '#EDAA88' },        // Lighter peach-toned specimens
-      { name: 'Pink-Orange',      hex: '#D97059' },        // Saturated pink-orange
+      {
+        name: 'Lotus Pink-Orange',
+        hex: '#E8956B',
+        image: '/gems/variants/padparadscha-sapphire/lotus-pink-orange.webp',
+      },
+      {
+        name: 'Salmon',
+        hex: '#E97F6A',
+        image: '/gems/variants/padparadscha-sapphire/salmon.webp',
+      },
+      {
+        name: 'Peach',
+        hex: '#EDAA88',
+        image: '/gems/variants/padparadscha-sapphire/peach.webp',
+      },
+      {
+        name: 'Pink-Orange',
+        hex: '#D97059',
+        image: '/gems/variants/padparadscha-sapphire/pink-orange.webp',
+      },
     ],
     availableCuts: FACETED_CORUNDUM_CUTS,
     recommendedCut: 'oval',
@@ -58,15 +71,32 @@ export const GEMSTONES: Gemstone[] = [
       'Crisp facet reflections and brilliance',
       'Classic Ceylon corundum transparency',
     ],
-    // NGJA: Ceylon blue sapphires noted for "lighter and brighter blue tones" to
-    // "velvety blue to violetish hue, medium to medium-dark" — cornflower blue is
-    // the internationally recognised descriptor for the finest Ceylon specimens.
     colourVariants: [
-      { name: 'Royal Blue',       hex: '#1A3A8A' },        // Classic deep royal blue
-      { name: 'Cornflower Blue',  hex: '#5B82D6' },        // Bright cornflower — Ceylon hallmark
-      { name: 'Violetish Blue',   hex: '#283878' },        // Violetish hue documented by NGJA
-      { name: 'Deep Blue',        hex: '#0D1F4F' },        // Very dark specimens
-      { name: 'Light Blue',       hex: '#8AAEE6' },        // Lighter Ceylon material
+      {
+        name: 'Royal Blue',
+        hex: '#1A3A8A',
+        image: '/gems/variants/royal-blue-sapphire/royal-blue.webp',
+      },
+      {
+        name: 'Cornflower Blue',
+        hex: '#5B82D6',
+        image: '/gems/variants/royal-blue-sapphire/cornflower-blue.webp',
+      },
+      {
+        name: 'Violetish Blue',
+        hex: '#283878',
+        image: '/gems/variants/royal-blue-sapphire/violetish-blue.webp',
+      },
+      {
+        name: 'Deep Blue',
+        hex: '#0D1F4F',
+        image: '/gems/variants/royal-blue-sapphire/deep-blue.webp',
+      },
+      {
+        name: 'Light Blue',
+        hex: '#8AAEE6',
+        image: '/gems/variants/royal-blue-sapphire/light-blue.webp',
+      },
     ],
     availableCuts: FACETED_CORUNDUM_CUTS,
     recommendedCut: 'oval',
@@ -86,14 +116,27 @@ export const GEMSTONES: Gemstone[] = [
       'Exceptional center crown facet alignment',
       'Signature internal fluorescence',
     ],
-    // NGJA: "Most Sri Lankan varieties are of a pinkish red and display a tint of purple"
-    // "Pigeon Blood Red" is a colour description used in gem circles, not a universal grade.
-    // The purplish tint in Sri Lankan rubies is attributed to iron + chromium oxide.
     colourVariants: [
-      { name: 'Pinkish Red',    hex: '#C0455A' },          // Most common Sri Lankan ruby colour per NGJA
-      { name: 'Red',            hex: '#A8192E' },          // Classic red
-      { name: 'Purplish Red',   hex: '#8B2252' },          // Sri Lankan characteristic — iron + chromium
-      { name: 'Crimson Red',    hex: '#8B0020' },          // Deep crimson specimens
+      {
+        name: 'Pinkish Red',
+        hex: '#C0455A',
+        image: '/gems/variants/pigeon-blood-ruby/pinkish-red.webp',
+      },
+      {
+        name: 'Red',
+        hex: '#A8192E',
+        image: '/gems/variants/pigeon-blood-ruby/red.webp',
+      },
+      {
+        name: 'Purplish Red',
+        hex: '#8B2252',
+        image: '/gems/variants/pigeon-blood-ruby/purplish-red.webp',
+      },
+      {
+        name: 'Crimson Red',
+        hex: '#8B0020',
+        image: '/gems/variants/pigeon-blood-ruby/crimson-red.webp',
+      },
     ],
     availableCuts: FACETED_CORUNDUM_CUTS,
     recommendedCut: 'cushion',
@@ -113,15 +156,33 @@ export const GEMSTONES: Gemstone[] = [
       'High vitreous luster and fire',
       'Vibrant saturation under natural lighting',
     ],
-    // NGJA: Sri Lankan spinel ranges "ruby red, pink, orange, shades of reddish brown,
-    // purple, blue, bluish green, mauve, greenish black, black to colorless."
-    // Cobalt blue spinel is documented from Rathnapura, Okkampitiya and Embilipitiya.
     colourVariants: [
-      { name: 'Vivid Pink',   hex: '#E0427A' },            // Primary showcased colour
-      { name: 'Red',          hex: '#B52232' },            // Ruby-red spinel — documented
-      { name: 'Purple',       hex: '#7B3B8C' },            // Documented by NGJA
-      { name: 'Orange',       hex: '#D4603A' },            // Orange spinel — documented
-      { name: 'Cobalt Blue',  hex: '#1A4A9C', isRare: true }, // Natural cobalt-blue — documented as rare in SL
+      {
+        name: 'Vivid Pink',
+        hex: '#E0427A',
+        image: '/gems/variants/vivid-pink-spinel/vivid-pink.webp',
+      },
+      {
+        name: 'Red',
+        hex: '#B52232',
+        image: '/gems/variants/vivid-pink-spinel/red.webp',
+      },
+      {
+        name: 'Purple',
+        hex: '#7B3B8C',
+        image: '/gems/variants/vivid-pink-spinel/purple.webp',
+      },
+      {
+        name: 'Orange',
+        hex: '#D4603A',
+        image: '/gems/variants/vivid-pink-spinel/orange.webp',
+      },
+      {
+        name: 'Cobalt Blue',
+        hex: '#1A4A9C',
+        isRare: true,
+        image: '/gems/variants/vivid-pink-spinel/cobalt-blue.webp',
+      },
     ],
     availableCuts: FACETED_SPINEL_CUTS,
     recommendedCut: 'oval',
@@ -141,16 +202,32 @@ export const GEMSTONES: Gemstone[] = [
       'Warm autumnal brilliance and fire',
       'Sleek tapered silhouette with sharp tips',
     ],
-    // NGJA documents Hessonite as a Grossular variety.
-    // Variety updated from "Natural Spessartine / Hessonite" to reflect distinction:
-    // Hessonite is Grossular garnet (Ca-Al); Spessartine is Mn-Al garnet.
-    // The warm honey-gold amber colour is characteristic of Sri Lankan Hessonite.
     colourVariants: [
-      { name: 'Honey Yellow',   hex: '#C98B2A' },          // Classic hessonite honey tone
-      { name: 'Golden Yellow',  hex: '#C8921A' },          // Deeper golden specimens
-      { name: 'Cinnamon',       hex: '#A0541A' },          // Warm cinnamon-toned material
-      { name: 'Orange-Brown',   hex: '#8A4518' },          // Deeper orange-brown
-      { name: 'Amber',          hex: '#B87A20' },          // Rich amber material
+      {
+        name: 'Honey Yellow',
+        hex: '#C98B2A',
+        image: '/gems/variants/imperial-garnet/honey-yellow.webp',
+      },
+      {
+        name: 'Golden Yellow',
+        hex: '#C8921A',
+        image: '/gems/variants/imperial-garnet/golden-yellow.webp',
+      },
+      {
+        name: 'Cinnamon',
+        hex: '#A0541A',
+        image: '/gems/variants/imperial-garnet/cinnamon.webp',
+      },
+      {
+        name: 'Orange-Brown',
+        hex: '#8A4518',
+        image: '/gems/variants/imperial-garnet/orange-brown.webp',
+      },
+      {
+        name: 'Amber',
+        hex: '#B87A20',
+        image: '/gems/variants/imperial-garnet/amber.webp',
+      },
     ],
     availableCuts: FACETED_GARNET_CUTS,
     recommendedCut: 'marquise',
@@ -170,16 +247,39 @@ export const GEMSTONES: Gemstone[] = [
       'Balanced teardrop contours and proportion',
       'Vivid internal brilliance with minimal extinction',
     ],
-    // NGJA explicitly states Sri Lankan tourmaline colours:
-    // "yellowish green, dull green, honey yellow brown and rarely blue and bright green"
-    // "Attractive pink, bi-colour and Paraiba tourmalines are not found in Sri Lanka"
     colourVariants: [
-      { name: 'Yellowish Green',  hex: '#7A9A3A' },        // Most commonly noted by NGJA
-      { name: 'Dull Green',       hex: '#5A7A42' },        // Documented shade — NGJA
-      { name: 'Honey Yellow',     hex: '#C0902A' },        // Honey-yellow brown — NGJA
-      { name: 'Brown',            hex: '#7A5020' },        // Yellowish-brown — most abundant per NGJA
-      { name: 'Bright Green',     hex: '#2A8A3A', isRare: true }, // Rare in Sri Lanka — NGJA
-      { name: 'Blue',             hex: '#2A5A8A', isRare: true }, // Rare in Sri Lanka — NGJA
+      {
+        name: 'Yellowish Green',
+        hex: '#7A9A3A',
+        image: '/gems/variants/chrome-tourmaline/yellowish-green.webp',
+      },
+      {
+        name: 'Dull Green',
+        hex: '#5A7A42',
+        image: '/gems/variants/chrome-tourmaline/dull-green.webp',
+      },
+      {
+        name: 'Honey Yellow',
+        hex: '#C0902A',
+        image: '/gems/variants/chrome-tourmaline/honey-yellow.webp',
+      },
+      {
+        name: 'Brown',
+        hex: '#7A5020',
+        image: '/gems/variants/chrome-tourmaline/brown.webp',
+      },
+      {
+        name: 'Bright Green',
+        hex: '#2A8A3A',
+        isRare: true,
+        image: '/gems/variants/chrome-tourmaline/bright-green.webp',
+      },
+      {
+        name: 'Blue',
+        hex: '#2A5A8A',
+        isRare: true,
+        image: '/gems/variants/chrome-tourmaline/blue.webp',
+      },
     ],
     availableCuts: FACETED_TOURMALINE_CUTS,
     recommendedCut: 'pear',
@@ -199,17 +299,28 @@ export const GEMSTONES: Gemstone[] = [
       'Hand-polished mirror surface finish',
       'Classic high-dome spherical symmetry',
     ],
-    // Body colours documented for Sri Lankan moonstone.
-    // Blue adularescence is an optical EFFECT (caused by light scattering between
-    // feldspar layers) — not a separate body colour. It is noted separately below.
     colourVariants: [
-      { name: 'Milky White',    hex: '#EDE8E0' },          // Classic translucent body colour
-      { name: 'Silvery White',  hex: '#D8D8D8' },          // Near-transparent silvery material
-      { name: 'Cream',          hex: '#E5D9B8' },          // Warm cream-toned body
-      { name: 'Grey',           hex: '#9A9A9A' },          // Grey body colour specimens
+      {
+        name: 'Milky White',
+        hex: '#EDE8E0',
+        image: '/gems/variants/royal-moonstone/milky-white.webp',
+      },
+      {
+        name: 'Silvery White',
+        hex: '#D8D8D8',
+        image: '/gems/variants/royal-moonstone/silvery-white.webp',
+      },
+      {
+        name: 'Cream',
+        hex: '#E5D9B8',
+        image: '/gems/variants/royal-moonstone/cream.webp',
+      },
+      {
+        name: 'Grey',
+        hex: '#9A9A9A',
+        image: '/gems/variants/royal-moonstone/grey.webp',
+      },
     ],
-    // Note: Blue sheen (adularescence) is an optical effect, not a colour variant.
-    // All body colours above can display blue adularescence depending on stone quality.
     availableCuts: MOONSTONE_CUTS,
     recommendedCut: 'cabochon',
   },
@@ -228,12 +339,22 @@ export const GEMSTONES: Gemstone[] = [
       'Classic teardrop symmetry held in tweezers',
       'Pure colorless optical neutrality',
     ],
-    // NGJA: "white sapphires consist of pure corundum, devoid of any impurities"
-    // Some specimens show slight milkiness (Geuda origin); documented accordingly.
     colourVariants: [
-      { name: 'Colourless',       hex: '#F0F0F0' },        // Pure colorless — no impurities
-      { name: 'Near Colourless',  hex: '#E8E5DA' },        // Very slightly tinted
-      { name: 'Milky White',      hex: '#E0DAD0' },        // Translucent milky material
+      {
+        name: 'Colourless',
+        hex: '#F0F0F0',
+        image: '/gems/variants/white-sapphire/colourless.webp',
+      },
+      {
+        name: 'Near Colourless',
+        hex: '#E8E5DA',
+        image: '/gems/variants/white-sapphire/near-colourless.webp',
+      },
+      {
+        name: 'Milky White',
+        hex: '#E0DAD0',
+        image: '/gems/variants/white-sapphire/milky-white.webp',
+      },
     ],
     availableCuts: FACETED_CORUNDUM_CUTS,
     recommendedCut: 'pear',
@@ -253,15 +374,32 @@ export const GEMSTONES: Gemstone[] = [
       'High internal brilliance across all crown facets',
       'Flawless color uniformity under daylight',
     ],
-    // NGJA: "various shades are noted varying from pale yellow to saffron yellow
-    // and from yellow slightly tinted red to a deep citron yellow"
-    // Known locally as "Pushparaga". Found in all Corundum-producing areas.
     colourVariants: [
-      { name: 'Pale Yellow',    hex: '#E8DC8A' },          // Lightest documented shade — NGJA
-      { name: 'Lemon Yellow',   hex: '#D4C040' },          // Bright lemon yellow
-      { name: 'Canary Yellow',  hex: '#D4A820' },          // Classic canary tone
-      { name: 'Golden Yellow',  hex: '#C08018' },          // Deeper golden material
-      { name: 'Saffron Yellow', hex: '#C07010' },          // Saffron — NGJA documented
+      {
+        name: 'Pale Yellow',
+        hex: '#E8DC8A',
+        image: '/gems/variants/canary-yellow-sapphire/pale-yellow.webp',
+      },
+      {
+        name: 'Lemon Yellow',
+        hex: '#D4C040',
+        image: '/gems/variants/canary-yellow-sapphire/lemon-yellow.webp',
+      },
+      {
+        name: 'Canary Yellow',
+        hex: '#D4A820',
+        image: '/gems/variants/canary-yellow-sapphire/canary-yellow.webp',
+      },
+      {
+        name: 'Golden Yellow',
+        hex: '#C08018',
+        image: '/gems/variants/canary-yellow-sapphire/golden-yellow.webp',
+      },
+      {
+        name: 'Saffron Yellow',
+        hex: '#C07010',
+        image: '/gems/variants/canary-yellow-sapphire/saffron-yellow.webp',
+      },
     ],
     availableCuts: FACETED_CORUNDUM_CUTS,
     recommendedCut: 'oval',

@@ -47,10 +47,7 @@ export const GemstoneModal: React.FC<GemstoneModalProps> = ({
 
   if (!gemstone) return null;
 
-  // Resolve displayed image — use colour-variant image if available, else fall back
   const hasColourVariants = gemstone.colourVariants && gemstone.colourVariants.length > 0;
-  const selectedVariant = hasColourVariants ? gemstone.colourVariants![selectedColourIndex] : null;
-  const displayImage = selectedVariant?.image ?? gemstone.image;
 
   // Moonstone gets a special optical-effect note
   const cutNote = gemstone.id === 'royal-moonstone'
@@ -59,7 +56,7 @@ export const GemstoneModal: React.FC<GemstoneModalProps> = ({
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-5 md:p-8 bg-charcoal-950/95 backdrop-blur-md overflow-y-auto"
+      className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 md:p-6 lg:p-8 bg-charcoal-950/95 backdrop-blur-md overflow-y-auto"
       role="dialog"
       aria-modal="true"
       aria-labelledby="modal-gem-title"
@@ -71,7 +68,7 @@ export const GemstoneModal: React.FC<GemstoneModalProps> = ({
       />
 
       {/* Modal Dialog Card */}
-      <div className="relative w-full max-w-5xl bg-charcoal-900 border border-ivory-200/15 shadow-2xl overflow-hidden flex flex-col md:flex-row my-auto">
+      <div className="relative w-full max-w-5xl lg:max-w-6xl bg-charcoal-900 border border-ivory-200/15 shadow-2xl overflow-hidden flex flex-col md:flex-row my-auto rounded-lg">
 
         {/* Mobile Sticky / Top Bar with Close Button */}
         <div className="md:hidden flex items-center justify-between p-4 border-b border-ivory-200/10 bg-charcoal-950">
@@ -79,13 +76,13 @@ export const GemstoneModal: React.FC<GemstoneModalProps> = ({
             <span className="font-serif font-semibold text-gold-400 text-sm tracking-wider">
               {gemstone.itemNumber}
             </span>
-            <span className="text-xs uppercase tracking-wider text-ivory-200 font-medium">
+            <span className="text-xs uppercase tracking-wider text-ivory-200 font-medium truncate max-w-[200px]">
               &bull; {gemstone.name}
             </span>
           </div>
           <button
             onClick={onClose}
-            className="p-2 text-ivory-200 hover:text-ivory-100 bg-charcoal-900 border border-ivory-200/20 transition-colors focus:outline-none min-w-[42px] min-h-[42px] flex items-center justify-center"
+            className="p-2 text-ivory-200 hover:text-ivory-100 bg-charcoal-900 border border-ivory-200/20 transition-colors focus:outline-none min-w-[42px] min-h-[42px] flex items-center justify-center rounded-sm"
             aria-label="Close inspection window"
           >
             <X className="w-5 h-5" />
@@ -93,12 +90,12 @@ export const GemstoneModal: React.FC<GemstoneModalProps> = ({
         </div>
 
         {/* Left: Gemstone Visual Showcase */}
-        <div className="relative md:w-[42%] lg:w-[45%] bg-charcoal-950 flex flex-col items-center justify-center p-4 sm:p-6 md:p-10 border-b md:border-b-0 md:border-r border-ivory-200/10">
-          <div className="relative w-full max-w-sm aspect-square flex items-center justify-center overflow-hidden bg-charcoal-900/40 border border-ivory-200/10">
-            {/* Gemstone Image */}
+        <div className="relative md:w-[42%] lg:w-[44%] bg-charcoal-950 flex flex-col items-center justify-center p-4 sm:p-6 md:p-8 lg:p-10 border-b md:border-b-0 md:border-r border-ivory-200/10">
+          <div className="relative w-full max-w-sm aspect-square flex items-center justify-center overflow-hidden bg-charcoal-900/40 border border-ivory-200/10 rounded-md">
+            {/* Gemstone Image — preserved original archival photograph */}
             <img
-              src={displayImage}
-              alt={selectedVariant ? `${gemstone.name} — ${selectedVariant.name}` : gemstone.name}
+              src={gemstone.image}
+              alt={gemstone.name}
               className="w-full h-full object-cover transition-all duration-500"
             />
 
@@ -107,7 +104,7 @@ export const GemstoneModal: React.FC<GemstoneModalProps> = ({
 
             {/* Corner Authenticity Mark */}
             <div className="absolute bottom-2.5 right-2.5 pointer-events-none">
-              <span className="text-[10px] uppercase tracking-wider text-gold-400/90 font-semibold px-2 py-0.5 bg-charcoal-950/90 backdrop-blur-sm border border-gold-500/25">
+              <span className="text-[10px] uppercase tracking-wider text-gold-400/90 font-semibold px-2 py-0.5 bg-charcoal-950/90 backdrop-blur-sm border border-gold-500/25 rounded-sm">
                 Archival Specimen
               </span>
             </div>
@@ -119,7 +116,7 @@ export const GemstoneModal: React.FC<GemstoneModalProps> = ({
               e.stopPropagation();
               onNavigate('prev');
             }}
-            className="absolute left-3 top-1/2 -translate-y-1/2 p-2.5 text-ivory-300 hover:text-gold-300 bg-charcoal-900/80 border border-ivory-200/15 hover:border-gold-500/40 transition-all focus:outline-none"
+            className="absolute left-3 top-1/2 -translate-y-1/2 p-2.5 text-ivory-300 hover:text-gold-300 bg-charcoal-900/80 border border-ivory-200/15 hover:border-gold-500/40 transition-all focus:outline-none rounded-sm"
             aria-label="Previous gemstone"
           >
             <ChevronLeft className="w-5 h-5" />
@@ -129,7 +126,7 @@ export const GemstoneModal: React.FC<GemstoneModalProps> = ({
               e.stopPropagation();
               onNavigate('next');
             }}
-            className="absolute right-3 top-1/2 -translate-y-1/2 p-2.5 text-ivory-300 hover:text-gold-300 bg-charcoal-900/80 border border-ivory-200/15 hover:border-gold-500/40 transition-all focus:outline-none"
+            className="absolute right-3 top-1/2 -translate-y-1/2 p-2.5 text-ivory-300 hover:text-gold-300 bg-charcoal-900/80 border border-ivory-200/15 hover:border-gold-500/40 transition-all focus:outline-none rounded-sm"
             aria-label="Next gemstone"
           >
             <ChevronRight className="w-5 h-5" />
@@ -137,8 +134,8 @@ export const GemstoneModal: React.FC<GemstoneModalProps> = ({
         </div>
 
         {/* Right: Curatorial Specifications & Interactive Sections */}
-        <div className="md:w-[58%] lg:w-[55%] flex flex-col overflow-y-auto max-h-[80vh] md:max-h-[94vh]">
-          <div className="p-5 sm:p-7 md:p-8 flex flex-col flex-1">
+        <div className="md:w-[58%] lg:w-[56%] flex flex-col overflow-y-auto max-h-[80vh] md:max-h-[92vh]">
+          <div className="p-4 sm:p-6 md:p-8 flex flex-col flex-1">
 
             {/* Desktop Header */}
             <div className="hidden md:flex items-center justify-between mb-4 pb-3 border-b border-ivory-200/10">
@@ -152,7 +149,7 @@ export const GemstoneModal: React.FC<GemstoneModalProps> = ({
                 </span>
                 <button
                   onClick={onClose}
-                  className="p-1.5 text-ivory-400 hover:text-ivory-100 hover:border-gold-400/60 bg-charcoal-950/80 border border-ivory-200/15 transition-all focus:outline-none"
+                  className="p-1.5 text-ivory-400 hover:text-ivory-100 hover:border-gold-400/60 bg-charcoal-950/80 border border-ivory-200/15 transition-all focus:outline-none rounded-sm"
                   aria-label="Close inspection window"
                 >
                   <X className="w-4 h-4" />
@@ -163,19 +160,19 @@ export const GemstoneModal: React.FC<GemstoneModalProps> = ({
             {/* ── GEMSTONE IDENTITY ─────────────────────────────────────────── */}
             <h2
               id="modal-gem-title"
-              className="font-serif text-2xl sm:text-3xl md:text-[1.9rem] font-semibold text-ivory-100 tracking-tight mb-1.5"
+              className="font-serif text-2xl sm:text-3xl md:text-[1.9rem] font-semibold text-ivory-100 tracking-tight mb-1"
             >
               {gemstone.name}
             </h2>
 
-            <p className="text-xs sm:text-sm uppercase tracking-wider text-gold-400 font-semibold mb-4">
+            <p className="text-xs sm:text-sm uppercase tracking-wider text-gold-400 font-semibold mb-3">
               {gemstone.variety}
             </p>
 
             <div className="hairline-subtle mb-4" />
 
             {/* ── SPECIMEN SPECIFICATIONS ───────────────────────────────────── */}
-            <div className="space-y-2.5 mb-5 text-sm">
+            <div className="space-y-2 mb-5 text-sm">
               <div className="flex justify-between items-center py-1.5 border-b border-ivory-200/5">
                 <span className="text-ivory-400 uppercase tracking-wide text-xs font-medium">
                   Cut &amp; Faceting
@@ -192,7 +189,7 @@ export const GemstoneModal: React.FC<GemstoneModalProps> = ({
                   {gemstone.colorDescription}
                 </span>
               </div>
-              <div className="flex justify-between items-center py-1.5 border-b border-ivory-200/5">
+              <div className="flex justify-between items-center py-1 border-b border-ivory-200/5">
                 <span className="text-ivory-400 uppercase tracking-wide text-xs font-medium">
                   Mineral Structure
                 </span>
@@ -200,7 +197,7 @@ export const GemstoneModal: React.FC<GemstoneModalProps> = ({
                   {gemstone.mineralFamily}
                 </span>
               </div>
-              <div className="flex justify-between items-center py-1.5 border-b border-ivory-200/5">
+              <div className="flex justify-between items-center py-1 border-b border-ivory-200/5">
                 <span className="text-ivory-400 uppercase tracking-wide text-xs font-medium">
                   Optics
                 </span>
@@ -210,20 +207,18 @@ export const GemstoneModal: React.FC<GemstoneModalProps> = ({
               </div>
             </div>
 
-            {/* ── COLOUR VARIATIONS ─────────────────────────────────────────── */}
+            {/* ── FEATURE 1: COLOUR VARIATIONS (Visual Cards) ──────────────── */}
             {hasColourVariants && gemstone.colourVariants && (
-              <>
-                <div className="mb-5">
-                  <GemColourSelector
-                    variants={gemstone.colourVariants}
-                    selectedIndex={selectedColourIndex}
-                    onSelect={setSelectedColourIndex}
-                  />
-                </div>
-              </>
+              <div className="mb-5">
+                <GemColourSelector
+                  variants={gemstone.colourVariants}
+                  selectedIndex={selectedColourIndex}
+                  onSelect={setSelectedColourIndex}
+                />
+              </div>
             )}
 
-            {/* ── CUT & FACETING SELECTOR ────────────────────────────────────── */}
+            {/* ── FEATURE 2: CUT & FACETING SELECTOR ───────────────────────── */}
             {gemstone.availableCuts && gemstone.availableCuts.length > 0 && gemstone.recommendedCut && (
               <>
                 <div className="hairline-subtle mb-5" />
@@ -240,14 +235,14 @@ export const GemstoneModal: React.FC<GemstoneModalProps> = ({
             )}
 
             {/* ── VISUAL INSPECTION NOTES ───────────────────────────────────── */}
-            <div className="hairline-subtle mb-5" />
-            <div className="mb-5">
-              <div className="text-xs uppercase tracking-wider text-gold-400 mb-3 font-semibold">
+            <div className="hairline-subtle mb-4" />
+            <div className="mb-4">
+              <div className="text-xs uppercase tracking-wider text-gold-400 mb-2 font-semibold">
                 Visual Inspection Notes
               </div>
-              <ul className="space-y-2">
+              <ul className="space-y-1.5">
                 {gemstone.highlights.map((highlight, index) => (
-                  <li key={index} className="text-sm text-ivory-200 flex items-start space-x-2.5">
+                  <li key={index} className="text-xs sm:text-sm text-ivory-200 flex items-start space-x-2">
                     <span className="text-gold-400 leading-none mt-1">&bull;</span>
                     <span className="leading-relaxed font-normal">{highlight}</span>
                   </li>
@@ -255,21 +250,21 @@ export const GemstoneModal: React.FC<GemstoneModalProps> = ({
               </ul>
             </div>
 
-            {/* Spacer to push controls to bottom on desktop */}
+            {/* Spacer */}
             <div className="flex-1" />
 
             {/* ── MOBILE NAVIGATION ─────────────────────────────────────────── */}
-            <div className="md:hidden flex items-center justify-between gap-3 pt-4 border-t border-ivory-200/10 mt-2">
+            <div className="md:hidden flex items-center justify-between gap-3 pt-3 border-t border-ivory-200/10 mt-2">
               <button
                 onClick={() => onNavigate('prev')}
-                className="flex-1 py-3 px-4 bg-charcoal-950 border border-ivory-200/20 text-xs tracking-wider uppercase text-ivory-100 font-semibold active:bg-charcoal-800 flex items-center justify-center space-x-1.5 min-h-[44px]"
+                className="flex-1 py-2.5 px-4 bg-charcoal-950 border border-ivory-200/20 text-xs tracking-wider uppercase text-ivory-100 font-semibold active:bg-charcoal-800 flex items-center justify-center space-x-1.5 min-h-[44px] rounded-sm"
               >
                 <ChevronLeft className="w-4 h-4 text-gold-400" />
                 <span>Previous</span>
               </button>
               <button
                 onClick={() => onNavigate('next')}
-                className="flex-1 py-3 px-4 bg-charcoal-950 border border-ivory-200/20 text-xs tracking-wider uppercase text-ivory-100 font-semibold active:bg-charcoal-800 flex items-center justify-center space-x-1.5 min-h-[44px]"
+                className="flex-1 py-2.5 px-4 bg-charcoal-950 border border-ivory-200/20 text-xs tracking-wider uppercase text-ivory-100 font-semibold active:bg-charcoal-800 flex items-center justify-center space-x-1.5 min-h-[44px] rounded-sm"
               >
                 <span>Next</span>
                 <ChevronRight className="w-4 h-4 text-gold-400" />
@@ -277,13 +272,13 @@ export const GemstoneModal: React.FC<GemstoneModalProps> = ({
             </div>
 
             {/* ── DESKTOP FOOTER CONTROLS ───────────────────────────────────── */}
-            <div className="hidden md:flex mt-4 pt-4 border-t border-ivory-200/10 items-center justify-between">
+            <div className="hidden md:flex mt-4 pt-3 border-t border-ivory-200/10 items-center justify-between">
               <span className="text-xs tracking-wider text-ivory-400 uppercase font-medium">
                 Use &larr; &rarr; keys to browse
               </span>
               <button
                 onClick={onClose}
-                className="px-6 py-2.5 text-xs uppercase tracking-wider font-semibold text-ivory-100 border border-ivory-200/25 hover:border-gold-400/70 hover:text-gold-300 transition-colors"
+                className="px-5 py-2 text-xs uppercase tracking-wider font-semibold text-ivory-100 border border-ivory-200/25 hover:border-gold-400/70 hover:text-gold-300 transition-colors rounded-sm"
               >
                 Return to Gallery
               </button>
